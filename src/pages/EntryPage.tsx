@@ -4,6 +4,7 @@ import Spinner from '../components/spinner/Spinner';
 import MovieList from '../components/movielist/MovieList';
 import Heading from '../components/header/Heading';
 import { AppContext } from '../store/AppContextProvider';
+import './EntryPage.scss';
 
 export default function EntryPage() {
   const [searchResponse, updateSearchResponse] = useState<any>('');
@@ -61,19 +62,41 @@ export default function EntryPage() {
     fetchData(previousURL);
   }, []);
   return (
-    <React.Fragment>
+    <div className="entry-page">
       <Heading />
-      <SearchAndFilterBox fetchData={fetchData} />
-      {loading ? (
-        <Spinner />
-      ) : (
-        <MovieList
-          movieListOrError={searchResponse}
-          handlePageChange={handlePageChange}
-          currentPage={context.currentPage}
-        />
-      )}
-      {/* footer */}
-    </React.Fragment>
+      
+      <div className="entry-page__content">
+        <div className="entry-page__hero">
+          <div className="entry-page__hero-overlay"></div>
+          <img 
+            className="entry-page__hero-image" 
+            src="https://yts.mx/assets/images/movies/the_batman_2022/background.jpg" 
+            alt="Featured Movie"
+          />
+          <div className="entry-page__hero-content">
+            <h1 className="entry-page__hero-title">Découvrez des milliers de films</h1>
+            <p className="entry-page__hero-subtitle">Streaming gratuit en haute qualité</p>
+          </div>
+        </div>
+        
+        <SearchAndFilterBox fetchData={fetchData} />
+        
+        {loading ? (
+          <div className="entry-page__spinner">
+            <Spinner />
+          </div>
+        ) : (
+          <MovieList
+            movieListOrError={searchResponse}
+            handlePageChange={handlePageChange}
+            currentPage={context.currentPage}
+          />
+        )}
+      </div>
+      
+      <div className="entry-page__footer">
+        <p>YTS Streaming - Redesigned with ❤️</p>
+      </div>
+    </div>
   );
 }

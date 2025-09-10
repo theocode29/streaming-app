@@ -12,6 +12,7 @@ import WebTorrent, { Torrent } from 'webtorrent';
 import DownloaderWindow from './components/DownloaderWindow.js';
 import MainWindow from './components/MainWindow.js';
 import VideoPlayerWindow from './components/VideoPlayerWindow.js';
+import { initUpdater } from './components/updater.js';
 import {
   ASSETS_PATHs,
   DEV_SERVER,
@@ -40,6 +41,9 @@ app.on('ready', () => {
     static_server = serverReactContent();
   }
   createWindow();
+  
+  // Initialiser le système de mise à jour automatique
+  initUpdater(mainWindow);
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();

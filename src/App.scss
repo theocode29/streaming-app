@@ -1,12 +1,57 @@
+// App.scss
+// Fichier principal de styles pour l'application
+
+// Import du système de design
+@import './styles/main.scss';
+
+// Styles spécifiques à l'application
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  padding: $spacing-xl 0;
+}
+
+// Override de la scrollbar existante avec notre mixin
 .scrollbar {
-  &::-webkit-scrollbar {
-    width: 0.6rem;
-    background: #252525;
-    border: .5px solid #424141;
+  @include custom-scrollbar(0.6rem, $color-background-tertiary, $color-text-tertiary);
+}
+
+// Styles pour les pages
+.page {
+  padding: $spacing-xl 0;
+  
+  &-title {
+    margin-bottom: $spacing-xl;
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-bold;
+    text-align: center;
   }
 }
 
-.scrollbar::-webkit-scrollbar-thumb {
-  background-color: #555555;
-  border-radius: 10px;
+// Animation de transition entre les pages
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms, transform 300ms;
 }

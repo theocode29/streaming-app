@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieCard from '../moviecard/MovieCard';
 import ErrorHandling from '../ErrorHandling/ErrorHandling';
+import './MovieList.scss';
 
 interface MovieListProps {
   movieListOrError: any;
@@ -18,29 +19,25 @@ export default function MovieList(props: MovieListProps) {
   const limit = props.movieListOrError.data.limit;
 
   const total_page_number = Math.ceil(Number(movieListCount) / Number(limit));
-  const pageNumber: JSX.Element = (
-    <div className="row g-0">
-      <div className="col" />
-      <div className="col-2 me-3">
-        <select
-          id="page_selector"
-          className="form-select"
-          onChange={(e) => {
-            props.handlePageChange(e.target.value);
-          }}
-          value={props.currentPage}
-        >
-          {Array(total_page_number)
-            .fill(0)
-            .map((value, index) => {
-              return (
-                <option value={index + 1} key={index}>
-                  Page {index + 1}
-                </option>
-              );
-            })}
-        </select>
-      </div>
+  const pageSelector: JSX.Element = (
+    <div className="movie-list__pagination">
+      <select
+        id="page_selector"
+        onChange={(e) => {
+          props.handlePageChange(e.target.value);
+        }}
+        value={props.currentPage}
+      >
+        {Array(total_page_number)
+          .fill(0)
+          .map((value, index) => {
+            return (
+              <option value={index + 1} key={index}>
+                Page {index + 1}
+              </option>
+            );
+          })}
+      </select>
     </div>
   );
 
@@ -61,18 +58,14 @@ export default function MovieList(props: MovieListProps) {
   );
 
   return (
-    <React.Fragment>
-      <div>
-        <div className="mt-3">
-          <h5
-            className={'text-center text-success'}
-          >{`${movieListCount} YTS Movies Available`}</h5>
-        </div>
-        {pageNumber}
-        <div className="container-lg mt-4" style={{ minHeight: '400px' }}>
-          <div className="row justify-content-center">{listOfMovieCard}</div>
-        </div>
+    <div className="movie-list">
+      <div className="movie-list__header">
+        <h2 className="movie-list__title">{`${movieListCount} YTS Movies Available`}</h2>
       </div>
-    </React.Fragment>
+      {pageSelector}
+      <div className="movie-list__grid">
+        {listOfMovieCard}
+      </div>
+    </div>
   );
 }

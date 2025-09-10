@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld('api', {
       'download:pause',
       'download:resume',
       'style:caption',
+      'check-for-updates',
     ];
     if (allow_channels.includes(channel)) {
       ipcRenderer.send(channel, data);
@@ -26,6 +27,7 @@ contextBridge.exposeInMainWorld('api', {
       'Cache:ShowSpaceResponse',
       'download:info',
       'get:style:caption',
+      'update-progress',
     ];
     if (allow_channels.includes(channel)) {
       ipcRenderer.on(channel, (e, ...args) => func(...args));

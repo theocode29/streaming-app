@@ -1,0 +1,144 @@
+// SettingsModal.scss
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.settings-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: $z-index-modal;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background-color: $color-background-secondary;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-lg;
+  @include glassmorphism;
+  
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    border-bottom: 1px solid $color-border;
+    
+    &-title {
+      width: 100%;
+      text-align: center;
+      font-size: $font-size-lg;
+      font-weight: 600;
+      color: $color-text-primary;
+    }
+    
+    &-close {
+      background: none;
+      border: none;
+      color: $color-text-secondary;
+      cursor: pointer;
+      font-size: $font-size-lg;
+      padding: $spacing-xs;
+      transition: color $transition-fast;
+      
+      &:hover {
+        color: $color-accent-primary;
+      }
+    }
+  }
+  
+  &__body {
+    padding: $spacing-md;
+  }
+  
+  &__form-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: $spacing-md;
+    
+    &-label {
+      flex: 1;
+      font-size: $font-size-md;
+      color: $color-text-primary;
+      margin-right: $spacing-md;
+    }
+    
+    &-input {
+      @include form-control;
+      width: 35%;
+    }
+  }
+  
+  &__button {
+    @include button-primary;
+    width: 100%;
+    margin-top: $spacing-sm;
+  }
+  
+  &__section {
+    margin-bottom: $spacing-lg;
+    
+    &-title {
+      font-size: $font-size-md;
+      font-weight: 600;
+      color: $color-text-primary;
+      margin-bottom: $spacing-sm;
+      padding-bottom: $spacing-xs;
+      border-bottom: 1px solid $color-border;
+    }
+  }
+  
+  &__subtitle-options {
+    margin-top: $spacing-md;
+    
+    &-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      padding: $spacing-sm 0;
+      
+      &-title {
+        font-size: $font-size-md;
+        font-weight: 500;
+        color: $color-text-primary;
+      }
+      
+      &-icon {
+        transition: transform $transition-normal;
+        
+        &--expanded {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    
+    &-content {
+      padding: $spacing-sm 0;
+      
+      &--collapsed {
+        display: none;
+      }
+    }
+  }
+  
+  @media (max-width: $breakpoint-md) {
+    width: 95%;
+    
+    &__form-group {
+      flex-direction: column;
+      align-items: flex-start;
+      
+      &-label {
+        margin-right: 0;
+        margin-bottom: $spacing-xs;
+        width: 100%;
+      }
+      
+      &-input {
+        width: 100%;
+      }
+    }
+  }
+}

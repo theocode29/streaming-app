@@ -1,0 +1,187 @@
+// _mixins.scss
+// Mixins pour effets visuels modernes
+
+// Import des variables
+@import './variables';
+
+// Glassmorphism - effet de verre transparent
+@mixin glassmorphism($opacity: 0.1, $blur: 10px) {
+  background: rgba($color-background-secondary, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+// Transition fluide
+@mixin smooth-transition($property: all, $duration: $transition-normal, $timing: ease) {
+  transition: $property $duration $timing;
+  will-change: $property;
+}
+
+// Hover effect pour les cartes
+@mixin card-hover-effect {
+  @include smooth-transition(transform);
+  &:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: $shadow-lg;
+  }
+}
+
+// Overlay pour les cartes de films
+@mixin card-overlay($bg-color: rgba(0, 0, 0, 0.75)) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $bg-color;
+  opacity: 0;
+  @include smooth-transition(opacity);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: $spacing-md;
+  
+  &:hover {
+    opacity: 1;
+  }
+}
+
+// Truncate text
+@mixin text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Flexbox center
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Grid responsive
+@mixin responsive-grid($min-width: 250px, $gap: $spacing-md) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+// Button style
+@mixin button-style($bg-color: $color-accent-primary, $text-color: $color-text-primary) {
+  background-color: $bg-color;
+  color: $text-color;
+  border: none;
+  border-radius: $border-radius-md;
+  padding: $spacing-sm $spacing-lg;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  @include smooth-transition;
+  
+  &:hover {
+    background-color: darken($bg-color, 10%);
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-primary {
+  @include button-style;
+  background-color: $color-accent-primary;
+  color: $color-text-primary;
+  
+  &:hover {
+    background-color: lighten($color-accent-primary, 5%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  &:active {
+    background-color: darken($color-accent-primary, 5%);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Form control
+@mixin form-control {
+  display: block;
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  font-size: $font-size-base;
+  font-weight: $font-weight-normal;
+  line-height: 1.5;
+  color: $color-text-primary;
+  background-color: $color-background-secondary;
+  background-clip: padding-box;
+  border: 1px solid $color-border;
+  border-radius: $border-radius-md;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+  
+  &:focus {
+    border-color: $color-accent-primary;
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba($color-accent-primary, 0.25);
+  }
+}
+
+// Skeleton loading animation
+@mixin skeleton-loading {
+  background: linear-gradient(90deg, $color-background-tertiary 25%, lighten($color-background-tertiary, 5%) 50%, $color-background-tertiary 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Media queries
+@mixin media-breakpoint-up($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == md {
+    @media (min-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == lg {
+    @media (min-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == xl {
+    @media (min-width: $breakpoint-xl) { @content; }
+  } @else if $breakpoint == 2xl {
+    @media (min-width: $breakpoint-2xl) { @content; }
+  }
+}
+
+@mixin media-breakpoint-down($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: ($breakpoint-sm - 0.02px)) { @content; }
+  } @else if $breakpoint == md {
+    @media (max-width: ($breakpoint-md - 0.02px)) { @content; }
+  } @else if $breakpoint == lg {
+    @media (max-width: ($breakpoint-lg - 0.02px)) { @content; }
+  } @else if $breakpoint == xl {
+    @media (max-width: ($breakpoint-xl - 0.02px)) { @content; }
+  } @else if $breakpoint == 2xl {
+    @media (max-width: ($breakpoint-2xl - 0.02px)) { @content; }
+  }
+}
+
+// Scrollbar personnalisée
+@mixin custom-scrollbar($width: 6px, $track-color: $color-background-tertiary, $thumb-color: $color-text-tertiary) {
+  &::-webkit-scrollbar {
+    width: $width;
+    background: $track-color;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background-color: $thumb-color;
+    border-radius: $border-radius-full;
+  }
+}

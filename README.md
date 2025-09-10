@@ -1,15 +1,15 @@
 <!--
   Title: YTS Streaming
-  Description: yts streaming is an torrent movie streaming app based on electronJS and yts api. yts streaming is only available for windows platform. It helps to stream movies directly from torrent.
+  Description: yts streaming is an torrent movie streaming app based on electronJS and yts api. yts streaming is available for Windows, Linux and macOS platforms. It helps to stream movies directly from torrent.
   Author: Bipin Maharjan
   -->
 
 <!-- Keywords: yts streaming, yts movie streaming app, desktop yts streaming app, yts online streaming, yts movies online streaming, yts online movie streaming -->
 
-# YTS-Streaming v3.0 - Migrating to vite.
+# YTS-Streaming v4.0
 
-YTS-streaming application is an electron app for windows platform. Through YTS streaming application you can stream any movie available YTS(yify) movie website.
-YTS-streaming uses the content from the official YTS API v2. This app is simple to use with a minimalists design. It is more or less like the original YTS website with the ability to play the movie within the app and download the movies that are not supported by YTS player.
+YTS-streaming application is an electron app for Windows, Linux and macOS platforms. Through YTS streaming application you can stream any movie available on the YTS(yify) movie website.
+YTS-streaming uses the content from the official YTS API v2. This app is simple to use with a minimalist design. It is more or less like the original YTS website with the ability to play the movie within the app and download the movies that are not supported by YTS player.
 
 ### Download App > [Link to Releases](https://github.com/mbpn1/YTS-Streaming/releases) Download latest release
 

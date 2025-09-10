@@ -1,0 +1,102 @@
+// SearchAndFilterBox.scss
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.search-filter {
+  margin-bottom: $spacing-lg;
+  
+  &__container {
+    @include glassmorphism;
+    padding: $spacing-md;
+    border-radius: $border-radius-lg;
+    margin-bottom: $spacing-md;
+  }
+  
+  &__search-box {
+    display: flex;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-md;
+    
+    @include media-breakpoint-down(sm) {
+      flex-direction: column;
+    }
+  }
+  
+  &__input {
+    @include form-control;
+    flex: 1;
+    background-color: rgba($color-background-secondary, 0.7);
+    border-color: $color-border;
+    color: $color-text-primary;
+    padding: $spacing-sm $spacing-md;
+    
+    &::placeholder {
+      color: $color-text-secondary;
+    }
+    
+    &:focus {
+      border-color: $color-accent-primary;
+      box-shadow: 0 0 0 2px rgba($color-accent-primary, 0.25);
+    }
+  }
+  
+  &__button {
+    @include button-primary;
+    min-width: 100px;
+    
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+    }
+  }
+  
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-md;
+    margin-top: $spacing-md;
+    
+    @include media-breakpoint-down(md) {
+      flex-direction: column;
+      gap: $spacing-sm;
+    }
+  }
+  
+  &__divider {
+    height: 1px;
+    background: linear-gradient(to right, transparent, $color-border, transparent);
+    margin: $spacing-md 0;
+    width: 100%;
+  }
+}
+
+// Filter component styles
+.filter {
+  flex: 1;
+  min-width: 150px;
+  
+  &__label {
+    display: block;
+    margin-bottom: $spacing-xs;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  &__select {
+    @include form-control;
+    background-color: rgba($color-background-secondary, 0.7);
+    border-color: $color-border;
+    color: $color-text-primary;
+    width: 100%;
+    
+    &:focus {
+      border-color: $color-accent-primary;
+    }
+    
+    option {
+      background-color: $color-background-primary;
+      color: $color-text-primary;
+    }
+  }
+}

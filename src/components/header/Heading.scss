@@ -1,0 +1,72 @@
+// Heading.scss
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-index-header;
+  width: 100%;
+  @include glassmorphism;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid $color-border;
+  
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: $spacing-md;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  
+  &__logo {
+    display: flex;
+    align-items: center;
+    
+    img {
+      height: 40px;
+      transition: transform $transition-normal;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+  
+  &__back-button {
+    @include button-style;
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    color: $color-text-primary;
+    background-color: transparent;
+    border: 1px solid $color-accent-primary;
+    padding: $spacing-xs $spacing-md;
+    
+    &:hover {
+      background-color: rgba($color-accent-primary, 0.1);
+    }
+    
+    .icon {
+      font-size: $font-size-lg;
+    }
+  }
+  
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+  
+  &__settings {
+    cursor: pointer;
+    color: $color-text-secondary;
+    transition: color $transition-fast;
+    
+    &:hover {
+      color: $color-accent-primary;
+    }
+  }
+}

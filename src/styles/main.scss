@@ -1,0 +1,142 @@
+// main.scss
+// Fichier principal de styles pour YTS-Streaming
+
+// Import des variables et mixins
+@import './variables';
+@import './mixins';
+
+// Reset et styles de base
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: $font-family-primary;
+  font-size: 16px;
+  line-height: 1.5;
+  background-color: $color-background-primary;
+  color: $color-text-primary;
+  @include custom-scrollbar();
+}
+
+a {
+  color: $color-accent-tertiary;
+  text-decoration: none;
+  @include smooth-transition(color);
+  
+  &:hover {
+    color: lighten($color-accent-tertiary, 10%);
+  }
+}
+
+// Typographie
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-secondary;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  font-size: $font-size-4xl;
+}
+
+h2 {
+  font-size: $font-size-3xl;
+}
+
+h3 {
+  font-size: $font-size-2xl;
+}
+
+h4 {
+  font-size: $font-size-xl;
+}
+
+h5 {
+  font-size: $font-size-lg;
+}
+
+h6 {
+  font-size: $font-size-md;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+}
+
+// Boutons
+.btn {
+  @include button-style;
+  display: inline-block;
+  text-align: center;
+  
+  &-primary {
+    @include button-style($color-accent-primary);
+  }
+  
+  &-secondary {
+    @include button-style($color-accent-secondary);
+  }
+  
+  &-tertiary {
+    @include button-style($color-accent-tertiary);
+  }
+  
+  &-outline {
+    background-color: transparent;
+    border: 1px solid $color-text-primary;
+    
+    &:hover {
+      background-color: rgba($color-text-primary, 0.1);
+    }
+  }
+  
+  &-sm {
+    padding: $spacing-xs $spacing-md;
+    font-size: $font-size-sm;
+  }
+  
+  &-lg {
+    padding: $spacing-md $spacing-xl;
+    font-size: $font-size-lg;
+  }
+}
+
+// Grille responsive
+.grid {
+  @include responsive-grid();
+}
+
+// Utilitaires
+.text-truncate {
+  @include text-truncate;
+}
+
+.flex-center {
+  @include flex-center;
+}
+
+// Animations
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+// Skeleton loading
+.skeleton {
+  @include skeleton-loading;
+}

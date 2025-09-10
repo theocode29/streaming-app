@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import Filter from './Filter';
 import { AppContext } from '../../store/AppContextProvider';
+import './SearchAndFilterBox.scss';
 
 const FilterTypes = {
   quality: ['All', '720p', '1080p', '2160p', '3D'],
@@ -130,75 +131,65 @@ export default function SearchAndFilterBox(props: SearchAndFilterBoxProps) {
   }, [quality, genre, rating, sortBy]);
 
   const searchBox = (
-    <div className="row justify-content-center">
-      <div className="col-12 col-lg-8">
-        <div className="row">
-          <div className="col-10 g-2">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search Movies"
-              value={searchInput}
-              onChange={handleSearchInput}
-              onKeyUp={(e) => {
-                handleEnterKey(e.code);
-              }}
-            />
-          </div>
-          <div className="col-2 g-2">
-            <input
-              type="button"
-              value="Search"
-              className="form-control btn-success"
-              onClick={(e) => {
-                e.currentTarget.blur();
-                handleSearch();
-              }}
-            />
-          </div>
-        </div>
-      </div>
+    <div className="search-filter__search-box">
+      <input
+        type="text"
+        className="search-filter__input"
+        placeholder="Search Movies"
+        value={searchInput}
+        onChange={handleSearchInput}
+        onKeyUp={(e) => {
+          handleEnterKey(e.code);
+        }}
+      />
+      <button
+        className="search-filter__button"
+        onClick={(e) => {
+          e.currentTarget.blur();
+          handleSearch();
+        }}
+      >
+        Search
+      </button>
     </div>
   );
 
   return (
-    <React.Fragment>
-      <div className={'container mt-3 pb-3'}>
+    <div className="search-filter">
+      <div className="search-filter__container">
         {searchBox}
-        <div>
-          <div className="row justify-content-center mt-4">
-            <Filter
-              label={'quality'}
-              values={FilterTypes.quality}
-              stateValue={quality}
-              updateStateValue={updateQuality}
-              updatePageNumber={updatePageNumber}
-            />
-            <Filter
-              label={'genre'}
-              values={FilterTypes.genre}
-              stateValue={genre}
-              updateStateValue={updateGenre}
-              updatePageNumber={updatePageNumber}
-            />
-            <Filter
-              label={'rating'}
-              values={FilterTypes.rating}
-              stateValue={rating}
-              updateStateValue={updateRating}
-              updatePageNumber={updatePageNumber}
-            />
-            <Filter
-              label={'sort by'}
-              values={FilterTypes['sort by']}
-              stateValue={sortBy}
-              updateStateValue={updateSortBy}
-              updatePageNumber={updatePageNumber}
-            />
-          </div>
+        <div className="search-filter__filters">
+          <Filter
+            label={'quality'}
+            values={FilterTypes.quality}
+            stateValue={quality}
+            updateStateValue={updateQuality}
+            updatePageNumber={updatePageNumber}
+          />
+          <Filter
+            label={'genre'}
+            values={FilterTypes.genre}
+            stateValue={genre}
+            updateStateValue={updateGenre}
+            updatePageNumber={updatePageNumber}
+          />
+          <Filter
+            label={'rating'}
+            values={FilterTypes.rating}
+            stateValue={rating}
+            updateStateValue={updateRating}
+            updatePageNumber={updatePageNumber}
+          />
+          <Filter
+            label={'sort by'}
+            values={FilterTypes['sort by']}
+            stateValue={sortBy}
+            updateStateValue={updateSortBy}
+            updatePageNumber={updatePageNumber}
+          />
         </div>
       </div>
-      <div className="w-100 border-bottom border-secondary" />
-    </React.Fragment>
+      <div className="search-filter__divider" />
+    </div>
   );
 }

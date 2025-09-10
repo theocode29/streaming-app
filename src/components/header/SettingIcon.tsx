@@ -12,12 +12,12 @@ export default function SettingIcon() {
 
   return (
     <React.Fragment>
-      <span className="text-dark" onClick={handleSettingClick} title="Settings">
+      <span className="settings-icon" onClick={handleSettingClick} title="Paramètres">
         <svg
           width="2em"
           height="2em"
           viewBox="0 0 16 16"
-          className={'biGearFill'}
+          className="settings-icon__svg"
           fill="currentColor"
           xmlns="http://www.w3.org/2000/svg"
         >

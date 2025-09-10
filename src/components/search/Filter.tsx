@@ -35,12 +35,12 @@ export default function Filter(props: FilterProps) {
   };
 
   return (
-    <div className="col-3 col-lg-2">
-      <label htmlFor={props.label} className={'form-label'}>
-        {capitalizeFirstLetter(props.label)}:
+    <div className="filter">
+      <label htmlFor={props.label} className="filter__label">
+        {capitalizeFirstLetter(props.label)}
       </label>
       <select
-        className="form-select"
+        className="filter__select"
         id={props.label}
         value={props.stateValue}
         onChange={handleOnChangeSelect}

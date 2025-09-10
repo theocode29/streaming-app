@@ -1,0 +1,83 @@
+// _variables.scss
+// Système de design moderne et minimaliste pour YTS-Streaming
+
+// Palette de couleurs sombre
+$color-background-primary: #0f0f0f; // Noir profond pour le fond principal
+$color-background-secondary: #1a1a1a; // Gris très foncé pour les éléments secondaires
+$color-background-tertiary: #252525; // Gris foncé pour les cartes et éléments interactifs
+
+$color-text-primary: #ffffff; // Blanc pour le texte principal
+$color-text-secondary: #b3b3b3; // Gris clair pour le texte secondaire
+$color-text-tertiary: #737373; // Gris moyen pour le texte tertiaire
+
+$color-accent-primary: #e50914; // Rouge Netflix pour les accents principaux
+$color-accent-secondary: #6ac045; // Vert YTS pour les accents secondaires (conserver l'identité)
+$color-accent-tertiary: #0071eb; // Bleu pour les liens et boutons secondaires
+
+// Typographie moderne
+$font-family-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+$font-family-secondary: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+$font-size-xs: 0.75rem;    // 12px
+$font-size-sm: 0.875rem;   // 14px
+$font-size-md: 1rem;       // 16px
+$font-size-lg: 1.125rem;   // 18px
+$font-size-xl: 1.25rem;    // 20px
+$font-size-2xl: 1.5rem;    // 24px
+$font-size-3xl: 1.875rem;  // 30px
+$font-size-4xl: 2.25rem;   // 36px
+$font-size-xxl: 2.5rem;    // 40px
+$font-size-base: $font-size-md; // Alias pour la taille de base
+
+$font-weight-regular: 400;
+$font-weight-normal: $font-weight-regular; // Alias pour le poids normal
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Espacement
+$spacing-xs: 0.25rem;  // 4px
+$spacing-sm: 0.5rem;   // 8px
+$spacing-md: 1rem;     // 16px
+$spacing-lg: 1.5rem;   // 24px
+$spacing-xl: 2rem;     // 32px
+$spacing-2xl: 3rem;    // 48px
+$spacing-3xl: 4rem;    // 64px
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 8px;
+$border-radius-lg: 12px;
+$border-radius-xl: 16px;
+$border-radius-full: 9999px;
+
+// Borders
+$color-border: rgba(255, 255, 255, 0.1); // Bordure semi-transparente pour les séparations
+
+// Shadows
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-normal: 250ms ease;
+$transition-slow: 350ms ease;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 1040;
+$z-index-modal: 1050;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+$z-index-header: 1000; // Z-index pour l'en-tête fixe
+
+// Breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-2xl: 1400px;

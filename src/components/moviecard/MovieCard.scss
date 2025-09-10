@@ -1,27 +1,107 @@
-.movie_title {
-  white-space: nowrap;
+// MovieCard.scss
+// Style moderne et minimaliste pour les cartes de films
+
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.movie-card {
+  position: relative;
+  border-radius: $border-radius-lg;
   overflow: hidden;
-  text-overflow: ellipsis;
+  background-color: $color-background-secondary;
+  box-shadow: $shadow-md;
+  @include card-hover-effect;
+  height: 100%;
+  
+  &__image-container {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 2/3;
+    
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-normal;
+    }
+  }
+  
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 50%);
+    opacity: 0;
+    @include smooth-transition(opacity);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: $spacing-md;
+    color: $color-text-primary;
+  }
+  
+  &__content {
+    padding: $spacing-md;
+  }
+  
+  &__title {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-xs;
+    @include text-truncate;
+  }
+  
+  &__year {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin-bottom: $spacing-xs;
+  }
+  
+  &__rating {
+    display: flex;
+    align-items: center;
+    font-size: $font-size-sm;
+    color: $color-accent-secondary;
+    
+    .star {
+      margin-right: $spacing-xs;
+    }
+  }
+  
+  &__genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-xs;
+    margin-top: $spacing-sm;
+  }
+  
+  &__genre {
+    font-size: $font-size-xs;
+    background-color: rgba($color-accent-secondary, 0.2);
+    color: $color-accent-secondary;
+    padding: 2px $spacing-xs;
+    border-radius: $border-radius-sm;
+  }
+  
+  // Hover effects
+  &:hover {
+    .movie-card__overlay {
+      opacity: 1;
+    }
+    
+    .movie-card__image-container img {
+      transform: scale(1.05);
+    }
+  }
 }
 
-.movie_date{
-  font-size: .9em;
-  color: #ADAFAE !important;
-}
-.movie_link{
-  cursor: pointer;
-}
-
-.card:hover .overlay, .overlay:hover {
-  display: block !important;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.85);
-}
-
-.card:hover{
-  border-color: #6ac045 !important;
+// Responsive adjustments
+@include media-breakpoint-up(md) {
+  .movie-card {
+    &__title {
+      font-size: $font-size-xl;
+    }
+  }
 }

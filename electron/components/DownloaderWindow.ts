@@ -17,7 +17,7 @@ export default class DownloaderWindow extends BrowserWindow {
         backgroundThrottling: false,
       },
       icon:
-        process.platform === 'linux'
+        process.platform === 'linux' || process.platform === 'darwin'
           ? path.join(
               get__dirname(import.meta.url),
               '../assets/icons/256x256.png'
